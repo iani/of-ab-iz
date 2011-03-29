@@ -37,6 +37,7 @@ public:
 
 	ofEvent<float> newFloatEvent;
 	ofEvent<int> newIntEvent;
+	
 
 private:
 	float counter;

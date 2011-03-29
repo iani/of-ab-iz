@@ -5,6 +5,13 @@
 void testApp::setup(){
 	ofBackground(50,50,50);
 
+	nInstances = 1000;
+	myClassObject = new myClass*[nInstances];
+	nInstances = 2;
+	myClassObject[0] = new myClass();
+	myClassObject[1] = new myClass();
+
+
     enabled=false;
 
 	// add the newFloat method to listen for eventsAddon newFloatEvent
@@ -14,10 +21,12 @@ void testApp::setup(){
 	ofAddListener(evObject.newIntEvent, this, &testApp::newInt);
 
 	// add the newFloat method to listen for myClass newFloatEvent
-	ofAddListener(myClassObject.newFloatEvent, this, &testApp::newTestFloat);
+	ofAddListener(myClassObject[0]->newFloatEvent, this, &testApp::newTestFloat);
 	
 	// add the newFloat method to listen for myClass newFloatEvent
-	ofAddListener(myClassObject.newIntEvent, this, &testApp::newTestInt);
+	ofAddListener(myClassObject[0]->newIntEvent, this, &testApp::newTestInt);
+	
+
 }
 
 
@@ -78,10 +87,10 @@ void testApp::mouseDragged(int x, int y, int button){
 void testApp::mousePressed(int x, int y, int button){
     if(enabled) {
         evObject.disable();
-		myClassObject.disable();
+		myClassObject[0]->disable();
     } else {
         evObject.enable();
-		myClassObject.enable();
+		myClassObject[0]->enable();
 	};
     enabled=!enabled;
 

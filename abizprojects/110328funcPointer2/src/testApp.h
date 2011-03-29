@@ -28,9 +28,10 @@ class testApp : public ofBaseApp {
 		void newTestFloat(float & f);
 		void newTestInt(int & i);
 
-
+		int nInstances;	// the number of instatces
+		
 		eventsObject evObject;
-		myClass myClassObject;
+		myClass **myClassObject;
 
 		string floatMsg;
 		string intMsg;
